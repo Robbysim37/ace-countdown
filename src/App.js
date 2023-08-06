@@ -1,24 +1,25 @@
-import logo from './logo.svg';
+import { Box } from '@mui/system';
 import './App.css';
+import {useState} from "react"
+import DigitContainer from './components/DigitContainer';
 
 function App() {
+
+  const futureTime = new Date().getSeconds + 10
+  const [seconds,setSeconds] = useState()
+  const [minutes,setMinutes] = useState()
+  const [hours,setHours] = useState()
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Box width={"100vw"} height={"100vh"} display={"flex"} 
+      justifyContent={"center"} alignItems={"center"}>
+      <Box display={"flex"} width={"50%"} height={"50%"} justifyContent={"center"} alignItems={"center"}>
+        {/* <DigitContainer colon time={hours} position={"H"}></DigitContainer>
+        <DigitContainer colon time={minutes} position={"M"}></DigitContainer> */}
+        <DigitContainer future={futureTime}
+         setTime={setSeconds} time={seconds} position={"S"}></DigitContainer>
+      </Box>
+    </Box>
   );
 }
 
