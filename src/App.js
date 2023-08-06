@@ -14,8 +14,8 @@ function App() {
     <Box width={"100vw"} height={"100vh"} display={"flex"} 
       justifyContent={"center"} alignItems={"center"}>
       <Box display={"flex"} width={"50%"} height={"50%"} justifyContent={"center"} alignItems={"center"}>
-        {/* <DigitContainer colon time={hours} position={"H"}></DigitContainer>
-        <DigitContainer colon time={minutes} position={"M"}></DigitContainer> */}
+        <DigitContainer colon time={hours} position={"H"}></DigitContainer>
+        <DigitContainer colon time={minutes} position={"M"}></DigitContainer>
         <DigitContainer future={futureTime}
          setTime={setSeconds} time={seconds} position={"S"}></DigitContainer>
       </Box>
