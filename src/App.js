@@ -1,26 +1,25 @@
-import { Box } from '@mui/system';
-import './App.css';
+import CountdownTimer from './CountdownTimer';
 import {useState} from "react"
-import DigitContainer from './components/DigitContainer';
 
-function App() {
+import './App.css';
 
-  const futureTime = new Date().getSeconds + 10
-  const [seconds,setSeconds] = useState()
-  const [minutes,setMinutes] = useState()
-  const [hours,setHours] = useState()
+export default function App() {
+  const THREE_DAYS_IN_MS = 3 * 24 * 60 * 60 * 1000;
+  const NOW_IN_MS = new Date().getTime();
+
+  const [dateTimeAfterThreeDays,
+    setDateTImeAfterThreeDays]= useState(NOW_IN_MS + THREE_DAYS_IN_MS)
+
+  const addTime = () => {
+    const time = new Date().getTime()
+    setDateTImeAfterThreeDays(time - (1000 * 60 * 60 * 24))
+  }
 
   return (
-    <Box width={"100vw"} height={"100vh"} display={"flex"} 
-      justifyContent={"center"} alignItems={"center"}>
-      <Box display={"flex"} width={"50%"} height={"50%"} justifyContent={"center"} alignItems={"center"}>
-        {/* <DigitContainer colon time={hours} position={"H"}></DigitContainer>
-        <DigitContainer colon time={minutes} position={"M"}></DigitContainer> */}
-        <DigitContainer future={futureTime}
-         setTime={setSeconds} time={seconds} position={"S"}></DigitContainer>
-      </Box>
-    </Box>
+    <div>
+      <h1>Countdown Timer</h1>
+      <CountdownTimer targetDate={dateTimeAfterThreeDays} />
+      <button on onClick={addTime}>test</button>
+    </div>
   );
 }
-
-export default App;
